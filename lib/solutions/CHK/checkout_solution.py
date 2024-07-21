@@ -86,10 +86,12 @@ def get_free_items(counter):
 def any_three_items_offer(counter):
     # buy any 3 of (S,T,X,Y,Z) for 45
     items = {'S', 'T', 'X', 'Y', 'Z'}
+    counted_items = len([item for item in counter if item in items])
+    print(counted_items)
     offer = 0
     ordered_by_price = order_items_by_price(counter)
 
-    if set(counter.keys()).intersection(items):
+    if counted_items >= 3:
         sum_skus = sum([counter[item] for item in items])
         if sum_skus >= 3:
             times = sum_skus // 3
@@ -139,6 +141,7 @@ store = {
     'Y': Item('Y', 20), # buy any 3 of (S,T,X,Y,Z) for 45
     'Z': Item('Z', 21), # buy any 3 of (S,T,X,Y,Z) for 45
 }
+
 
 
 
