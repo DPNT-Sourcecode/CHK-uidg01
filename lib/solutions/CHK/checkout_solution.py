@@ -40,7 +40,6 @@ class Item:
         if self.special_offers:
             price = 0
             quantity_offers = [offer for offer in self.special_offers if isinstance(offer, SpecialOffer)]
-            free_item_offers = [offer for offer in self.special_offers if isinstance(offer, FreeItemOffer)]
 
             for offer in quantity_offers:
                 if quantity >= offer.quantity:
@@ -49,6 +48,9 @@ class Item:
                 else:
                     price += self.price * quantity
                     break
+            else:
+                price += self.price * quantity
+
             return price
 
         return self.price * quantity
@@ -61,9 +63,4 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
 }
-
-
-
-
-
 
