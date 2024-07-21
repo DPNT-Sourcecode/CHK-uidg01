@@ -83,7 +83,8 @@ def any_three_items(counter):
     # buy any 3 of (S,T,X,Y,Z) for 45
     items = ['S', 'T', 'X', 'Y', 'Z']
     if sum([counter[item] for item in items]) >= 3:
-        return 45
+        times = sum([counter[item] for item in items]) // 3
+
 
 
 
@@ -115,6 +116,7 @@ store = {
     'Y': Item('Y', 20), # todo
     'Z': Item('Z', 21), # todo
 }
+
 
 
 
