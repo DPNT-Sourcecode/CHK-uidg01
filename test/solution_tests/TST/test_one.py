@@ -50,6 +50,3 @@ class TestCheckut():
     def test_complex_checkout(self):
         assert checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ') == 1602
 
-
-
-

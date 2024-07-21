@@ -106,6 +106,7 @@ def any_three_items_offer(counter):
                 if quantity - diff > 0:
                     counter[sku] -= diff
                 else:
+                    print(sku)
                     del counter[sku]
                     # counter[sku] = 0
                     diff -= quantity
@@ -146,13 +147,4 @@ store = {
     'Y': Item('Y', 20), # buy any 3 of (S,T,X,Y,Z) for 45
     'Z': Item('Z', 21), # buy any 3 of (S,T,X,Y,Z) for 45
 }
-
-
-
-
-
-
-
-
-
 
