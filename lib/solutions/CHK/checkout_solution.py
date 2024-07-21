@@ -11,6 +11,7 @@ def checkout(skus):
     total_checkout = 0
 
     skus_counter = Counter(skus)
+    print(skus_counter)
     if any_offer := any_three_items_offer(skus_counter):
         total_checkout += any_offer
 
@@ -138,6 +139,7 @@ store = {
     'Y': Item('Y', 20), # buy any 3 of (S,T,X,Y,Z) for 45
     'Z': Item('Z', 21), # buy any 3 of (S,T,X,Y,Z) for 45
 }
+
 
 
 

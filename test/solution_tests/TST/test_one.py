@@ -46,3 +46,8 @@ class TestCheckut():
         assert checkout('SSSZ') == 65
         assert checkout('ZZZS') == 65
         assert checkout('STXS') == 62
+
+    def test_complex_checkout(self):
+        assert checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ') == 1602
+
+
