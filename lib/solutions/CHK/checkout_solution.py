@@ -98,7 +98,13 @@ store = {
     'S': Item('S', 30),
     'T': Item('T', 20),
     'U': Item('U', 40, [SpecialOffer(3, 80)]),
+    'V': Item('V', 50, [SpecialOffer(2, 90), SpecialOffer(3, 130)]),
+    'W': Item('W', 20),
+    'X': Item('X', 90),
+    'Y': Item('Y', 10),
+    'Z': Item('Z', 50),
 }
+
 
 
 
