@@ -1,3 +1,4 @@
+from collections import Counter
 from dataclasses import dataclass
 
 # noinspection PyUnusedLocal
@@ -8,8 +9,10 @@ def checkout(skus):
             return -1
 
     total_checkout = 0
-    for sku in skus:
-        total_checkout += store[sku].get_price()
+
+    skus_counter = Counter(skus)
+    for sku, quantity in skus_counter.items():
+        total_checkout += store[sku].get_price(quantity)
 
     return total_checkout
 
@@ -38,4 +41,5 @@ store = {
     'C': Item('C', 20),
     'D': Item('D', 15),
 }
+
 
