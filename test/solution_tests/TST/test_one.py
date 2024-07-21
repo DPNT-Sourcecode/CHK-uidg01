@@ -52,4 +52,8 @@ class TestCheckut():
         assert checkout('LGCKAQXFOSKZGIWHNRNDITVBUUEOZXPYAVFDEPTBMQLYJRSMJCWH') == 1602
         assert checkout('AAAAAPPPPPUUUUEEBRRRQAAAHHHHHHHHHHKKVVVBBNNNMFFFQQQVVHHHHHSTX') == 1655
 
+    def test_checkout_free(self):
+        assert checkout('CXYZYZC') == 122
+
+
 
