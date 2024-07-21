@@ -53,16 +53,24 @@ class Item:
             else:
                 price += self.price * quantity
 
-            free_item_offers = [offer for offer in self.special_offers if isinstance(offer, FreeItemOffer)]
-            for offer in free_item_offers:
-                if quantity >= offer.quantity:
-                    free_item_quantity = quantity // offer.quantity
-                    free_item = store[offer.free_item]
-                    price -= free_item.get_price(free_item_quantity * offer.free_item_quantity)
-                    quantity %= offer.quantity
+            # free_item_offers = [offer for offer in self.special_offers if isinstance(offer, FreeItemOffer)]
+            # for offer in free_item_offers:
+            #     if quantity >= offer.quantity:
+            #         free_item_quantity = quantity // offer.quantity
+            #         free_item = store[offer.free_item]
+            #         price -= free_item.get_price(free_item_quantity * offer.free_item_quantity)
+            #         quantity %= offer.quantity
             return price
 
         return self.price * quantity
+
+    def get_free_items(self, quantity):
+        free_item_offers = [offer for offer in self.special_offers if isinstance(offer, FreeItemOffer)]
+        for offer in free_item_offers:
+            if quantity >= offer.quantity:
+                yield offer
+                quantity %= offer.quantity
+
 
 
 store = {
@@ -72,6 +80,7 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
 }
+
 
 
 
