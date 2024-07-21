@@ -1,10 +1,11 @@
 from solutions.TST import one
-from solutions.CHK import checkout
+from solutions.CHK.checkout_solution import checkout
 
 
 class TestSum():
     def test_sum(self):
         assert one.get() == 1
+
 
 class TestCheckut():
     def test_checkout(self):
@@ -21,4 +22,5 @@ class TestCheckut():
         assert checkout('AAAB') == 160
         assert checkout('AAABB') == 175
         assert checkout('AAABBD') == 190
+
 
