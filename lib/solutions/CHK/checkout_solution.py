@@ -85,11 +85,12 @@ def get_free_items(counter):
 def any_three_items_offer(counter):
     # buy any 3 of (S,T,X,Y,Z) for 45
     items = {'S', 'T', 'X', 'Y', 'Z'}
+    offer = 0
     if set(counter.keys()).intersection(items):
         if sum([counter[item] for item in items]) >= 3:
             times = sum([counter[item] for item in items]) // 3
-            return 45 * times
-    return 0
+            offer += times * 45
+    return offer
 
 
 store = {
@@ -120,4 +121,5 @@ store = {
     'Y': Item('Y', 20), # todo
     'Z': Item('Z', 21), # todo
 }
+
 
