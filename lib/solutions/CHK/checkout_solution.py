@@ -59,7 +59,8 @@ class Item:
                 if quantity >= offer.quantity and offer.free_item in skus:
                     free_item_quantity = quantity // offer.quantity
                     free_item = store[offer.free_item]
-                    price -= free_item.get_price(free_item_quantity * offer.free_item_quantity, skus)
+                    # price -= free_item.get_price(free_item_quantity * offer.free_item_quantity, skus)
+                    price -= free_item.price * offer.free_item_quantity
                     quantity %= offer.quantity
             return price
 
@@ -73,5 +74,6 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
 }
+
 
 
