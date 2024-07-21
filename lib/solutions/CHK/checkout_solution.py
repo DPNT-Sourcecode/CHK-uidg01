@@ -12,13 +12,11 @@ def checkout(skus):
 
     skus_counter = Counter(skus)
     free_items = get_free_items(skus_counter)
-    print(free_items)
 
     for free_item in free_items:
         if free_item in skus_counter:
             skus_counter[free_item] -= 1
 
-    print(skus_counter)
     for sku, quantity in skus_counter.items():
         total_checkout += store[sku].get_price(quantity, skus)
     return total_checkout
@@ -60,13 +58,6 @@ class Item:
             else:
                 price += self.price * quantity
 
-            # free_item_offers = [offer for offer in self.special_offers if isinstance(offer, FreeItemOffer)]
-            # for offer in free_item_offers:
-            #     if quantity >= offer.quantity and offer.free_item in skus:
-            #         free_item_quantity = quantity // offer.quantity
-            #         free_item = store[offer.free_item]
-            #         price -= free_item.get_price(free_item_quantity, skus)
-            #         quantity %= offer.quantity
             return price
 
         return self.price * quantity
@@ -80,7 +71,9 @@ def get_free_items(counter):
                 free_item_offers = [offer for offer in item.special_offers if isinstance(offer, FreeItemOffer)]
                 for offer in free_item_offers:
                     if quantity >= offer.quantity:
-                        free_items.append(offer.free_item)
+                        times = quantity // offer.quantity
+                        for _ in range(times):
+                            free_items.append(offer.free_item)
     return free_items
 
 store = {
@@ -90,6 +83,7 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
 }
+
 
 
 
