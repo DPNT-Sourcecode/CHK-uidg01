@@ -30,8 +30,8 @@ class Item:
     special_offer: SpecialOffer | None = None
 
     def get_price(self, quantity=1):
-        if self.special_offer and quantity == self.special_offer.quantity:
-            return self.special_offer.price
+        if self.special_offer and quantity >= self.special_offer.quantity:
+            return self.special_offer.price * (quantity // self.special_offer.quantity) + self.price * (quantity % self.special_offer.quantity)
         return self.price * quantity
 
 
@@ -41,4 +41,5 @@ store = {
     'C': Item('C', 20),
     'D': Item('D', 15),
 }
+
 
