@@ -47,8 +47,9 @@ class TestCheckut():
         assert checkout('ZZZS') == 65
         assert checkout('STXS') == 62
 
-    # def test_complex_checkout(self):
-    #     assert checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ') == 1602
+    def test_complex_checkout(self):
+        assert checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ') == 1602
+
 
 
 
