@@ -81,12 +81,7 @@ store = {
     'B': Item('B', 30, [SpecialOffer(2, 45)]),
     'C': Item('C', 20),
     'D': Item('D', 15),
-    'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
+    'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)]),
+    'F': Item('F', 10, [FreeItemOffer(2, 'F', 1)]),
 }
-
-
-
-
-
-
 
