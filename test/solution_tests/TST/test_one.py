@@ -38,3 +38,9 @@ class TestCheckut():
         assert checkout('FFFFF') == 40
         assert checkout('FFFFFF') == 40
         assert checkout('FFFFFFF') == 50
+
+    def test_anyoffer_checkout(self):
+        assert checkout('STX') == 45
+        assert checkout('STXSTX') == 90
+        assert checkout('SSS') == 45
+
