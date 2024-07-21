@@ -20,6 +20,7 @@ def checkout(skus):
         if free_item in skus_counter:
             skus_counter[free_item] -= 1
 
+    print(skus_counter)
     for sku, quantity in skus_counter.items():
         total_checkout += store[sku].get_price(quantity)
     return total_checkout
@@ -100,6 +101,7 @@ def any_three_items_offer(counter):
                 else:
                     counter[sku] = 0
                     diff -= quantity
+    print(offer)
     return offer
 
 def order_items_by_price(counter):
@@ -136,6 +138,7 @@ store = {
     'Y': Item('Y', 20), # buy any 3 of (S,T,X,Y,Z) for 45
     'Z': Item('Z', 21), # buy any 3 of (S,T,X,Y,Z) for 45
 }
+
 
 
 
