@@ -20,8 +20,6 @@ def checkout(skus):
         if free_item in skus_counter:
             skus_counter[free_item] -= 1
 
-    any_three_items_discount = any_three_items_offer(skus_counter)
-
     for sku, quantity in skus_counter.items():
         total_checkout += store[sku].get_price(quantity)
     return total_checkout
@@ -31,6 +29,7 @@ def checkout(skus):
 class SpecialOffer:
     quantity: int
     price: int
+    any_three_items: bool = False
 
 
 @dataclass
@@ -131,6 +130,7 @@ store = {
     'Y': Item('Y', 20), # buy any 3 of (S,T,X,Y,Z) for 45
     'Z': Item('Z', 21), # buy any 3 of (S,T,X,Y,Z) for 45
 }
+
 
 
 
