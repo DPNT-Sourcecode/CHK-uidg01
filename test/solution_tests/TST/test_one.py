@@ -23,11 +23,7 @@ class TestCheckut():
         assert checkout('AAAB') == 160
         assert checkout('AAABB') == 175
         assert checkout('AAABBD') == 190
+        assert checkout('EE') == 80
         assert checkout('EEB') == 80
         assert checkout('EEEB') == 120
         assert checkout('EEEEBB') == 160
-
-
-
-
-
