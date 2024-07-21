@@ -12,7 +12,7 @@ def checkout(skus):
 
     skus_counter = Counter(skus)
     for sku, quantity in skus_counter.items():
-        total_checkout += store[sku].get_price(quantity)
+        total_checkout += store[sku].get_price(quantity, skus)
 
     return total_checkout
 
@@ -36,7 +36,7 @@ class Item:
     price: int
     special_offers: list[SpecialOffer | FreeItemOffer] | None = None
 
-    def get_price(self, quantity=1):
+    def get_price(self, quantity, skus):
         if self.special_offers:
             price = 0
             quantity_offers = sorted(
@@ -53,24 +53,16 @@ class Item:
             else:
                 price += self.price * quantity
 
-            # free_item_offers = [offer for offer in self.special_offers if isinstance(offer, FreeItemOffer)]
-            # for offer in free_item_offers:
-            #     if quantity >= offer.quantity:
-            #         free_item_quantity = quantity // offer.quantity
-            #         free_item = store[offer.free_item]
-            #         price -= free_item.get_price(free_item_quantity * offer.free_item_quantity)
-            #         quantity %= offer.quantity
+            free_item_offers = [offer for offer in self.special_offers if isinstance(offer, FreeItemOffer)]
+            for offer in free_item_offers:
+                if quantity >= offer.quantity and offer.free_item in skus:
+                    free_item_quantity = quantity // offer.quantity
+                    free_item = store[offer.free_item]
+                    price -= free_item.get_price(free_item_quantity * offer.free_item_quantity)
+                    quantity %= offer.quantity
             return price
 
         return self.price * quantity
-
-    def get_free_items(self, quantity):
-        free_item_offers = [offer for offer in self.special_offers if isinstance(offer, FreeItemOffer)]
-        for offer in free_item_offers:
-            if quantity >= offer.quantity:
-                yield offer
-                quantity %= offer.quantity
-
 
 
 store = {
@@ -80,9 +72,4 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
 }
-
-
-
-
-
 
