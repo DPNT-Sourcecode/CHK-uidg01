@@ -12,7 +12,7 @@ def checkout(skus):
 
     skus_counter = Counter(skus)
     if any_offer := any_three_items_offer(skus_counter):
-        return any_offer
+        total_checkout += any_offer
 
     free_items = get_free_items(skus_counter)
 
@@ -67,6 +67,7 @@ class Item:
 
         return self.price * quantity
 
+
 def get_free_items(counter):
     free_items = []
     for sku, quantity in counter.items():
@@ -86,6 +87,7 @@ def any_three_items_offer(counter):
     # buy any 3 of (S,T,X,Y,Z) for 45
     items = {'S', 'T', 'X', 'Y', 'Z'}
     offer = 0
+    print(counter)
     if set(counter.keys()).intersection(items):
         sum_skus = sum([counter[item] for item in items])
         if sum_skus >= 3:
@@ -98,8 +100,6 @@ def any_three_items_offer(counter):
                 else:
                     counter[sku] = 0
                     diff -= quantity
-
-
     return offer
 
 
@@ -131,6 +131,7 @@ store = {
     'Y': Item('Y', 20), # buy any 3 of (S,T,X,Y,Z) for 45
     'Z': Item('Z', 21), # buy any 3 of (S,T,X,Y,Z) for 45
 }
+
 
 
 
