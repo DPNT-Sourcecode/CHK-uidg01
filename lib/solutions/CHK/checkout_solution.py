@@ -63,9 +63,6 @@ class Item:
 
         return self.price * quantity
 
-    def get_free_item(self):
-        pass
-
 
 store = {
     'A': Item('A', 50, [SpecialOffer(3, 130), SpecialOffer(5, 200)]),
@@ -74,6 +71,7 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
 }
+
 
 
 
