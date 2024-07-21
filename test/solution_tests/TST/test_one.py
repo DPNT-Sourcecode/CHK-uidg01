@@ -38,4 +38,3 @@ class TestCheckut():
         assert checkout('FFFFF') == 40
         assert checkout('FFFFFF') == 40
         assert checkout('FFFFFFF') == 50
-
