@@ -83,6 +83,22 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)]),
     'F': Item('F', 10, [SpecialOffer(3, 20)]),
+    'G': Item('G', 20),
+    'H': Item('H', 10, [SpecialOffer(5, 45), SpecialOffer(10, 80)]),
+    'I': Item('I', 35),
+    'J': Item('J', 60),
+    'K': Item('K', 70, [SpecialOffer(2, 120)]),
+    'L': Item('L', 90),
+    'M': Item('M', 15),
+    'N': Item('N', 40, [FreeItemOffer(3, 'M', 1)]),
+    'O': Item('O', 10),
+    'P': Item('P', 50, [SpecialOffer(5, 200)]),
+    'Q': Item('Q', 30, [SpecialOffer(3, 80)]),
+    'R': Item('R', 50, [FreeItemOffer(3, 'Q', 1)]),
+    'S': Item('S', 30),
+    'T': Item('T', 20),
+    'U': Item('U', 40, [SpecialOffer(3, 80)]),
 }
+
 
 
