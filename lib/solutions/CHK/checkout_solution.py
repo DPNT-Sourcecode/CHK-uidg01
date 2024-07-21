@@ -15,6 +15,7 @@ def checkout(skus):
     if any_offer := any_three_items_offer(skus_counter):
         total_checkout += any_offer
 
+    print(skus_counter)
     free_items = get_free_items(skus_counter)
 
     for free_item in free_items:
@@ -99,12 +100,14 @@ def any_three_items_offer(counter):
             offer += times * 45
 
             diff = 3 * times
+            print(diff)
             for sku in ordered_by_price:
                 quantity = counter[sku]
                 if quantity - diff > 0:
                     counter[sku] -= diff
                 else:
-                    counter[sku] = 0
+                    del counter[sku]
+                    # counter[sku] = 0
                     diff -= quantity
     print(offer)
     return offer
@@ -143,6 +146,7 @@ store = {
     'Y': Item('Y', 20), # buy any 3 of (S,T,X,Y,Z) for 45
     'Z': Item('Z', 21), # buy any 3 of (S,T,X,Y,Z) for 45
 }
+
 
 
 
