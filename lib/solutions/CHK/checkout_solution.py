@@ -27,7 +27,7 @@ class SpecialOffer:
 class Item:
     name: str
     price: int
-    special_offer: SpecialOffer | None = None
+    special_offer: list[SpecialOffer] | None = None
 
     def get_price(self, quantity=1):
         if self.special_offer and quantity >= self.special_offer.quantity:
@@ -41,5 +41,6 @@ store = {
     'C': Item('C', 20),
     'D': Item('D', 15),
 }
+
 
 
