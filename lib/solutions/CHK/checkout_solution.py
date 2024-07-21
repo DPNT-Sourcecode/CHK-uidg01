@@ -91,7 +91,14 @@ def any_three_items_offer(counter):
         if sum_skus >= 3:
             times = sum_skus // 3
             offer += times * 45
-            # for sku, quantity in counter.items():
+            diff = 3 * times
+            for sku, quantity in counter.items():
+                if quantity - diff > 0:
+                    counter[sku] -= diff
+                else:
+                    counter[sku] = 0
+                    diff -= quantity
+
 
     return offer
 
@@ -124,6 +131,7 @@ store = {
     'Y': Item('Y', 20), # buy any 3 of (S,T,X,Y,Z) for 45
     'Z': Item('Z', 21), # buy any 3 of (S,T,X,Y,Z) for 45
 }
+
 
 
 
