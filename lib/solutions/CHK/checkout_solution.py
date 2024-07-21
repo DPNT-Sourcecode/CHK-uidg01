@@ -26,7 +26,7 @@ class SpecialOffer:
 @dataclass
 class FreeItemOffer:
     quantity: int
-    free_item: "Item"
+    free_item: str
     free_item_quantity: int
 
 
@@ -34,7 +34,7 @@ class FreeItemOffer:
 class Item:
     name: str
     price: int
-    special_offer: list[SpecialOffer] | None = None
+    special_offer: list[SpecialOffer | FreeItemOffer] | None = None
 
     def get_price(self, quantity=1):
         if self.special_offer and quantity >= self.special_offer.quantity:
@@ -47,7 +47,8 @@ store = {
     'B': Item('B', 30, [SpecialOffer(2, 45)]),
     'C': Item('C', 20),
     'D': Item('D', 15),
-    'E': Item('E', 40), # TODO: Add special offer for E
+    'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
 }
+
 
 
