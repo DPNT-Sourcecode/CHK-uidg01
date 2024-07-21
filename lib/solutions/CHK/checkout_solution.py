@@ -47,6 +47,7 @@ class Item:
                     quantity %= offer.quantity
                 else:
                     price += self.price * quantity
+                    break
             return price
 
         return self.price * quantity
@@ -59,6 +60,7 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
 }
+
 
 
 
