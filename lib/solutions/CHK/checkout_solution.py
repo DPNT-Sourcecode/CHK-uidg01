@@ -87,9 +87,12 @@ def any_three_items_offer(counter):
     items = {'S', 'T', 'X', 'Y', 'Z'}
     offer = 0
     if set(counter.keys()).intersection(items):
-        if sum([counter[item] for item in items]) >= 3:
-            times = sum([counter[item] for item in items]) // 3
+        sum_skus = sum([counter[item] for item in items])
+        if sum_skus >= 3:
+            times = sum_skus // 3
             offer += times * 45
+            # for sku, quantity in counter.items():
+
     return offer
 
 
@@ -121,6 +124,7 @@ store = {
     'Y': Item('Y', 20), # buy any 3 of (S,T,X,Y,Z) for 45
     'Z': Item('Z', 21), # buy any 3 of (S,T,X,Y,Z) for 45
 }
+
 
 
 
