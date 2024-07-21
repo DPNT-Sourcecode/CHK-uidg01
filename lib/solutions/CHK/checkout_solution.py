@@ -54,6 +54,7 @@ class Item:
             else:
                 price += self.price * quantity
 
+            print(price, quantity, skus, self.name)
             free_item_offers = [offer for offer in self.special_offers if isinstance(offer, FreeItemOffer)]
             for offer in free_item_offers:
                 if quantity >= offer.quantity and offer.free_item in skus:
@@ -73,6 +74,7 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
 }
+
 
 
 
