@@ -86,7 +86,7 @@ def any_three_items_offer(counter):
     # buy any 3 of (S,T,X,Y,Z) for 45
     items = {'S', 'T', 'X', 'Y', 'Z'}
     offer = 0
-    print(counter)
+    lowest_price_item = get_lowest_price_item(counter)
     if set(counter.keys()).intersection(items):
         sum_skus = sum([counter[item] for item in items])
         if sum_skus >= 3:
@@ -101,8 +101,16 @@ def any_three_items_offer(counter):
                     diff -= quantity
     return offer
 
-def get_lowest_price(counter):
-    return min([store[sku].price for sku in counter])
+def get_lowest_price_item(counter):
+    lowest_price = float('inf')
+    lowest_price_item = None
+    for sku, _ in counter.items():
+        if sku in store:
+            item = store[sku]
+            if item.price < lowest_price:
+                lowest_price = item.price
+                lowest_price_item = item
+    return lowest_price_item
 
 
 
@@ -135,4 +143,5 @@ store = {
     'Y': Item('Y', 20), # buy any 3 of (S,T,X,Y,Z) for 45
     'Z': Item('Z', 21), # buy any 3 of (S,T,X,Y,Z) for 45
 }
+
 
