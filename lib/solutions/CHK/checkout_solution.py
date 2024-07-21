@@ -101,6 +101,11 @@ def any_three_items_offer(counter):
                     diff -= quantity
     return offer
 
+def get_lowest_price(counter):
+    return min([store[sku].price for sku in counter])
+
+
+
 
 store = {
     'A': Item('A', 50, [SpecialOffer(3, 130), SpecialOffer(5, 200)]),
@@ -130,10 +135,4 @@ store = {
     'Y': Item('Y', 20), # buy any 3 of (S,T,X,Y,Z) for 45
     'Z': Item('Z', 21), # buy any 3 of (S,T,X,Y,Z) for 45
 }
-
-
-
-
-
-
 
