@@ -34,11 +34,21 @@ class FreeItemOffer:
 class Item:
     name: str
     price: int
-    special_offer: list[SpecialOffer | FreeItemOffer] | None = None
+    special_offers: list[SpecialOffer | FreeItemOffer] | None = None
 
     def get_price(self, quantity=1):
-        if self.special_offer and quantity >= self.special_offer.quantity:
-            return self.special_offer.price * (quantity // self.special_offer.quantity) + self.price * (quantity % self.special_offer.quantity)
+        if self.special_offers:
+            price = 0
+            quantity_offers = [offer for offer in self.special_offers if isinstance(offer, SpecialOffer)]
+
+            for offer in quantity_offers:
+                if quantity >= offer.quantity:
+                    price += offer.price * (quantity // offer.quantity)
+                    quantity %= offer.quantity
+                else:
+                    price += self.price * quantity
+            return price
+
         return self.price * quantity
 
 
@@ -49,6 +59,7 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
 }
+
 
 
 
