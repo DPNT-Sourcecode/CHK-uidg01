@@ -8,8 +8,10 @@ def checkout(skus):
             return -1
 
     total_checkout = 0
+    for sku in skus:
+        total_checkout += basket[sku].get_price()
 
-    return -1
+    return total_checkout
 
 
 @dataclass
@@ -24,6 +26,11 @@ class Item:
     price: int
     special_offer: SpecialOffer | None = None
 
+    def get_price(self) -> int:
+        if self.special_offer:
+            return self.special_offer.price
+        return self.price
+
 
 basket = {
     'A': Item('A', 50, SpecialOffer(3, 130)),
@@ -32,11 +39,8 @@ basket = {
     'D': Item('D', 15),
 }
 
-def get_item_checkout_price(item: Item, quantity: int):
-    if item.special_offer:
-        return item.special_offer.price
 
-    return item.price
+
 
 
 
