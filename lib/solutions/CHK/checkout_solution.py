@@ -20,7 +20,6 @@ def checkout(skus):
         if free_item in skus_counter:
             skus_counter[free_item] -= 1
 
-    print(skus_counter)
     for sku, quantity in skus_counter.items():
         total_checkout += store[sku].get_price(quantity)
     return total_checkout
@@ -88,8 +87,6 @@ def any_three_items_offer(counter):
     items = {'S', 'T', 'X', 'Y', 'Z'}
     offer = 0
     ordered_by_price = order_items_by_price(counter)
-    print(ordered_by_price)
-    print(counter)
 
     if set(counter.keys()).intersection(items):
         sum_skus = sum([counter[item] for item in items])
@@ -105,11 +102,10 @@ def any_three_items_offer(counter):
                 else:
                     counter[sku] = 0
                     diff -= quantity
-    print(offer)
     return offer
 
 def order_items_by_price(counter):
-    return sorted(counter.items(), key=lambda x: store[x[0]].price, reverse=True)
+    return sorted(counter.keys(), key=lambda x: store[x].price, reverse=True)
 
 
 
@@ -142,6 +138,7 @@ store = {
     'Y': Item('Y', 20), # buy any 3 of (S,T,X,Y,Z) for 45
     'Z': Item('Z', 21), # buy any 3 of (S,T,X,Y,Z) for 45
 }
+
 
 
 
