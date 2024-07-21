@@ -43,6 +43,3 @@ store = {
     'E': Item('E', 40), # TODO: Add special offer for E
 }
 
-
-
-
