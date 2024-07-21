@@ -1,4 +1,5 @@
 
-def sum(x: int, y:int) -> int:
-    return x + y
+def get():
+    return 1
+
 
