@@ -39,8 +39,10 @@ class Item:
     def get_price(self, quantity=1):
         if self.special_offers:
             price = 0
-            quantity_offers = [offer for offer in self.special_offers if isinstance(offer, SpecialOffer)]
-            quantity_offers.sort(key=lambda x: x.quantity, reverse=True)
+            quantity_offers = sorted(
+                [offer for offer in self.special_offers if isinstance(offer, SpecialOffer)],
+                key=lambda x: x.quantity, reverse=True
+            )
 
             for offer in quantity_offers:
                 if quantity >= offer.quantity:
@@ -50,6 +52,8 @@ class Item:
                     pass
             else:
                 price += self.price * quantity
+
+            free_item_offers = [offer for offer in self.special_offers if isinstance(offer, FreeItemOffer)]
 
             return price
 
@@ -63,6 +67,7 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
 }
+
 
 
 
