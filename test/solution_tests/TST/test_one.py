@@ -43,4 +43,3 @@ class TestCheckut():
         assert checkout('STX') == 45
         assert checkout('STXSTX') == 90
         assert checkout('SSS') == 45
-
