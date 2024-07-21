@@ -4,12 +4,12 @@ from dataclasses import dataclass
 # skus = unicode string
 def checkout(skus):
     for sku in skus:
-        if sku not in basket:
+        if sku not in store:
             return -1
 
     total_checkout = 0
     for sku in skus:
-        total_checkout += basket[sku].get_price()
+        total_checkout += store[sku].get_price()
 
     return total_checkout
 
@@ -26,21 +26,16 @@ class Item:
     price: int
     special_offer: SpecialOffer | None = None
 
-    def get_price(self) -> int:
-        if self.special_offer:
+    def get_price(self, quantity=1):
+        if self.special_offer and quantity == self.special_offer.quantity:
             return self.special_offer.price
-        return self.price
+        return self.price * quantity
 
 
-basket = {
+store = {
     'A': Item('A', 50, SpecialOffer(3, 130)),
     'B': Item('B', 30, SpecialOffer(2, 45)),
     'C': Item('C', 20),
     'D': Item('D', 15),
 }
-
-
-
-
-
 
