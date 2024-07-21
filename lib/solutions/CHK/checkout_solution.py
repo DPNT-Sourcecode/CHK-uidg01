@@ -47,8 +47,7 @@ class Item:
                     price += offer.price * (quantity // offer.quantity)
                     quantity %= offer.quantity
                 else:
-                    price += self.price * quantity
-                    break
+                    pass
             else:
                 price += self.price * quantity
 
@@ -64,5 +63,6 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
 }
+
 
 
