@@ -18,7 +18,7 @@ def checkout(skus):
             skus_counter[free_item] -= 1
 
     for sku, quantity in skus_counter.items():
-        total_checkout += store[sku].get_price(quantity, skus)
+        total_checkout += store[sku].get_price(quantity)
     return total_checkout
 
 
@@ -41,7 +41,7 @@ class Item:
     price: int
     special_offers: list[SpecialOffer | FreeItemOffer] | None = None
 
-    def get_price(self, quantity, skus):
+    def get_price(self, quantity):
         if self.special_offers:
             price = 0
             quantity_offers = sorted(
@@ -104,6 +104,7 @@ store = {
     'Y': Item('Y', 20), # todo
     'Z': Item('Z', 21), # todo
 }
+
 
 
 
