@@ -24,6 +24,13 @@ class SpecialOffer:
 
 
 @dataclass
+class FreeItemOffer:
+    quantity: int
+    free_item: "Item"
+    free_item_quantity: int
+
+
+@dataclass
 class Item:
     name: str
     price: int
@@ -42,4 +49,5 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40), # TODO: Add special offer for E
 }
+
 
