@@ -13,6 +13,7 @@ def checkout(skus):
     skus_counter = Counter(skus)
     print(skus_counter)
     for sku, quantity in skus_counter.items():
+        print(sku, quantity)
         total_checkout += store[sku].get_price(quantity, skus)
 
     return total_checkout
@@ -74,6 +75,7 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
 }
+
 
 
 
