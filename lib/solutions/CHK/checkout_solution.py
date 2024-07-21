@@ -40,6 +40,7 @@ class Item:
         if self.special_offers:
             price = 0
             quantity_offers = [offer for offer in self.special_offers if isinstance(offer, SpecialOffer)]
+            quantity_offers.sort(key=lambda x: x.quantity, reverse=True)
 
             for offer in quantity_offers:
                 if quantity >= offer.quantity:
@@ -63,4 +64,5 @@ store = {
     'D': Item('D', 15),
     'E': Item('E', 40, [FreeItemOffer(2, 'B', 1)],)
 }
+
 
