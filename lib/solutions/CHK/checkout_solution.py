@@ -36,11 +36,13 @@ class Item:
 
 
 store = {
-    'A': Item('A', 50, SpecialOffer(3, 130)),
-    'B': Item('B', 30, SpecialOffer(2, 45)),
+    'A': Item('A', 50, [SpecialOffer(3, 130), SpecialOffer(5, 200)]),
+    'B': Item('B', 30, [SpecialOffer(2, 45)]),
     'C': Item('C', 20),
     'D': Item('D', 15),
+    'E': Item('E', 40), # TODO: Add special offer for E
 }
+
 
 
 
